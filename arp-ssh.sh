@@ -3,6 +3,11 @@
 
 interface=$1
 
+if [[ -z "$interface" ]]; then
+  echo "Usage: arp-ssh enp10s0"
+  exit 1
+fi
+
 # Scan the local network interface for devices
 devices="`sudo arp-scan --interface=$interface --localnet | sed '1,2d'`"
 selected="`(echo "$devices" | fzf)`"
