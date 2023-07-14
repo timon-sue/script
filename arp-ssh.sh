@@ -21,5 +21,5 @@ fi
 ip=$(sudo arp-scan --interface=$interface --localnet | grep "$selected" | awk '{print $1}')
 
 # Connect to the device using SSH
-ssh_retry $ip
+ssh-retry $ip
 
